@@ -1,6 +1,5 @@
-import 'package:finalassign/sign_up.dart';
-import 'package:flutter/cupertino.dart';
-import 'bottomnavbar.dart';
+import 'package:finalassign/Sign_in/sign_up.dart';
+import '../bottomnavbar.dart';
 import 'login.dart';
 import 'package:flutter/material.dart';
 

@@ -5,7 +5,7 @@ import 'package:finalassign/postApi/web1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'bottomnavbar.dart';
+import '../bottomnavbar.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
