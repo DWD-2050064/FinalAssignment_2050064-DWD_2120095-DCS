@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
+import '../bottomnavbar.dart';
+
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
 
@@ -28,6 +30,7 @@ class _SignupState extends State<Signup> {
   Widget build(BuildContext context) {
     String regdate = DateFormat('d MMM y').format(now);
     return Scaffold(
+      bottomNavigationBar: BottomNavBar(),
       backgroundColor: CupertinoColors.black,
       body: Container(
         padding: EdgeInsets.only(left: 10, top: 50),
