@@ -21,6 +21,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.black,
         bottomNavigationBar: BottomNavBar(),
         body: Container(
           padding: EdgeInsets.fromLTRB(10, 150, 10, 0),
@@ -33,8 +34,8 @@ class _LoginState extends State<Login> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: Colors.blue,
-                    fontSize: 22
+                    color: Colors.white,
+                    fontSize: 40
                   ),
                 )
               ),
@@ -42,21 +43,25 @@ class _LoginState extends State<Login> {
                 padding: EdgeInsets.all(10),
                 child: TextFormField(
                   controller: username,
-                  cursorColor: Colors.pink,
+                  cursorColor: Colors.orange,
                   decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: BorderSide(
-                              color: Colors.pink
+                              color: Colors.orange
                           )
                       ),
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: BorderSide(
-                              color: Colors.pink
+                              color: Colors.orange
                           )
                       ),
-                      labelText: 'Username'
+                      labelText: 'Username',
+                    labelStyle: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white
+                    ),
                   ),
                 ),
               ),
@@ -67,29 +72,34 @@ class _LoginState extends State<Login> {
                 obscureText: !passwordVisible,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  fillColor: Colors.pink,
+                  fillColor: Colors.orange,
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                       borderSide: BorderSide(
-                          color: Colors.pink
+                          color: Colors.orange
                       )
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide(
-                      color: Colors.pink
+                      color: Colors.orange
                     )
                   ),
-                  hintText: 'Password',
+                  labelText: 'Password',
+                  labelStyle: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white
+                  ),
                   suffixIcon: IconButton(
-                    color: Colors.pink,
+                    color: Colors.orange,
                       onPressed: (){
                         setState(() {
                           passwordVisible = !passwordVisible;
                         });
                       },
                       icon: Icon(
-                          passwordVisible ? Icons.visibility: Icons.visibility_off
+                          passwordVisible ? Icons.visibility: Icons.visibility_off,
+                        color: Colors.white,
                       )
                   ),
                 ),
@@ -116,7 +126,23 @@ class _LoginState extends State<Login> {
                       });
                     }
                   },
-                  child: Text('Login')
+                  child: Container(
+                    width: 300,
+                    height: 50,
+                    decoration: BoxDecoration(
+                        color: Colors.orange,
+                        borderRadius: BorderRadius.circular(5)
+                    ),
+                    padding: const EdgeInsets.all(10),
+                    child: const Text(
+                      'Login',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white
+                      ),
+                    ),
+                  )
               )
             ],
           ),

@@ -1,3 +1,4 @@
+import 'package:finalassign/Sign_in/merchant_login.dart';
 import 'package:finalassign/Sign_in/sign_up.dart';
 import '../bottomnavbar.dart';
 import 'login.dart';
@@ -17,7 +18,7 @@ class _SignInState extends State<SignIn> {
         constraints: const BoxConstraints.expand(),
         decoration: const BoxDecoration(
         image: DecorationImage(
-        image: AssetImage("assets/images/img.png"), fit: BoxFit.cover)),
+        image: AssetImage("assets/images/img_2.png"), fit: BoxFit.cover)),
         child: Scaffold(
           backgroundColor: Colors.transparent,
             bottomNavigationBar: BottomNavBar(),
@@ -34,6 +35,18 @@ class _SignInState extends State<SignIn> {
               ),
               child: ListView(
                 children: [
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    child: const Text(
+                      'Sign Up',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.orange,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30
+                      ),
+                    ),
+                  ),
                   TextButton(
                     onPressed: (){
                       Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const Login()));
@@ -42,7 +55,7 @@ class _SignInState extends State<SignIn> {
                       width: 300,
                       height: 50,
                       decoration: BoxDecoration(
-                        color: Colors.blueGrey,
+                        color: Colors.orange,
                         borderRadius: BorderRadius.circular(5)
                       ),
                       padding: const EdgeInsets.all(10),
@@ -50,7 +63,8 @@ class _SignInState extends State<SignIn> {
                         'Login',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: 20
+                          fontSize: 20,
+                          color: Colors.white
                         ),
                       ),
                     )
@@ -63,7 +77,7 @@ class _SignInState extends State<SignIn> {
                         width: 300,
                         height: 50,
                         decoration: BoxDecoration(
-                            color: Colors.blueGrey,
+                            color: Colors.orange,
                             borderRadius: BorderRadius.circular(5)
                         ),
                         padding: const EdgeInsets.all(10),
@@ -71,6 +85,7 @@ class _SignInState extends State<SignIn> {
                           'Sign Up',
                           textAlign: TextAlign.center,
                           style: TextStyle(
+                              color: Colors.white,
                               fontSize: 20
                           ),
                         ),
@@ -88,7 +103,7 @@ class _SignInState extends State<SignIn> {
                           ),
                           TextButton(
                               onPressed: (){
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const Login()));
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const Merchant_Login()));
                               },
                               child: Container(
                                 padding: const EdgeInsets.all(10),
@@ -96,7 +111,7 @@ class _SignInState extends State<SignIn> {
                                   'Merchant',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      color: Colors.blue
+                                      color: Colors.orange
                                   ),
                                 ),
                               )

@@ -22,6 +22,7 @@ class _Merchant_LoginState extends State<Merchant_Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.black,
         bottomNavigationBar: BottomNavBar(),
         body: Container(
           padding: EdgeInsets.fromLTRB(10, 150, 10, 0),
@@ -34,7 +35,7 @@ class _Merchant_LoginState extends State<Merchant_Login> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: Colors.blue,
+                    color: Colors.orange,
                     fontSize: 22
                   ),
                 )
@@ -43,21 +44,24 @@ class _Merchant_LoginState extends State<Merchant_Login> {
                 padding: EdgeInsets.all(10),
                 child: TextFormField(
                   controller: username,
-                  cursorColor: Colors.pink,
+                  cursorColor: Colors.orange,
                   decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: BorderSide(
-                              color: Colors.pink
+                              color: Colors.orange
                           )
                       ),
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: BorderSide(
-                              color: Colors.pink
+                              color: Colors.orange
                           )
                       ),
-                      labelText: 'Username'
+                      labelText: 'Username',
+                      labelStyle: TextStyle(
+                      color: Colors.orange
+                  ),
                   ),
                 ),
               ),
@@ -68,29 +72,33 @@ class _Merchant_LoginState extends State<Merchant_Login> {
                 obscureText: !passwordVisible,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  fillColor: Colors.pink,
+                  fillColor: Colors.orange,
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                       borderSide: BorderSide(
-                          color: Colors.pink
+                          color: Colors.orange
                       )
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide(
-                      color: Colors.pink
+                      color: Colors.orange
                     )
                   ),
-                  hintText: 'Password',
+                  labelText: 'Password',
+                  labelStyle: TextStyle(
+                    color: Colors.orange
+                  ),
                   suffixIcon: IconButton(
-                    color: Colors.pink,
+                    color: Colors.orange,
                       onPressed: (){
                         setState(() {
                           passwordVisible = !passwordVisible;
                         });
                       },
                       icon: Icon(
-                          passwordVisible ? Icons.visibility: Icons.visibility_off
+                          passwordVisible ? Icons.visibility: Icons.visibility_off,
+                        color: Colors.white,
                       )
                   ),
                 ),
@@ -117,7 +125,23 @@ class _Merchant_LoginState extends State<Merchant_Login> {
                       });
                     }
                   },
-                  child: Text('Login')
+                  child: Container(
+                    width: 300,
+                    height: 50,
+                    decoration: BoxDecoration(
+                        color: Colors.orange,
+                        borderRadius: BorderRadius.circular(5)
+                    ),
+                    padding: const EdgeInsets.all(10),
+                    child: const Text(
+                      'Login',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white
+                      ),
+                    ),
+                  )
               )
             ],
           ),

@@ -28,6 +28,7 @@ class _SignupState extends State<Signup> {
   Widget build(BuildContext context) {
     String regdate = DateFormat('d MMM y').format(now);
     return Scaffold(
+      backgroundColor: CupertinoColors.black,
       body: Container(
         padding: EdgeInsets.only(left: 10, top: 50),
         child: ListView(
@@ -38,8 +39,9 @@ class _SignupState extends State<Signup> {
                   'Sign Up',
                   textAlign: TextAlign.center,
                 style: TextStyle(
+                  color: Colors.orange,
                   fontWeight: FontWeight.bold,
-                  fontSize: 20
+                  fontSize: 40
                 ),
               ),
             ),
@@ -50,12 +52,21 @@ class _SignupState extends State<Signup> {
                 controller: username,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.orange
+                    ),
                     borderRadius: BorderRadius.circular(5)
                   ),
                   focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          color: Colors.orange
+                      ),
                     borderRadius: BorderRadius.circular(5)
                   ),
-                  labelText: 'Username'
+                  labelText: 'Username',
+                  labelStyle: TextStyle(
+                    color: Colors.white
+                  )
                 ),
               ),
             ),
@@ -65,12 +76,21 @@ class _SignupState extends State<Signup> {
                 controller: password,
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Colors.orange
+                        ),
                         borderRadius: BorderRadius.circular(5)
                     ),
                     focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Colors.orange
+                        ),
                         borderRadius: BorderRadius.circular(5)
                     ),
-                    labelText: 'password'
+                    labelText: 'password',
+                    labelStyle: TextStyle(
+                        color: Colors.white
+                    )
                 ),
               ),
             ),
@@ -80,12 +100,21 @@ class _SignupState extends State<Signup> {
                 controller: confirm_password,
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Colors.orange
+                        ),
                         borderRadius: BorderRadius.circular(5)
                     ),
                     focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Colors.orange
+                        ),
                         borderRadius: BorderRadius.circular(5)
                     ),
-                    labelText: 'confirm password'
+                    labelText: 'confirm password',
+                    labelStyle: TextStyle(
+                        color: Colors.white
+                    )
                 ),
               ),
             ),
@@ -100,12 +129,21 @@ class _SignupState extends State<Signup> {
                 :null,
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Colors.orange
+                        ),
                         borderRadius: BorderRadius.circular(5)
                     ),
                     focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Colors.orange
+                        ),
                         borderRadius: BorderRadius.circular(5)
                     ),
-                    labelText: 'email'
+                    labelText: 'email',
+                    labelStyle: TextStyle(
+                        color: Colors.white
+                    )
                 ),
               ),
             ),
@@ -115,18 +153,26 @@ class _SignupState extends State<Signup> {
                 keyboardType: TextInputType.number,
                 inputFormatters: [
                   ICNumberFormatter(),
-                  LengthLimitingTextInputFormatter(
-                      14),
+                  LengthLimitingTextInputFormatter(14),
                 ],
                 controller: ic,
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Colors.orange
+                        ),
                         borderRadius: BorderRadius.circular(5)
                     ),
                     focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Colors.orange
+                        ),
                         borderRadius: BorderRadius.circular(5)
                     ),
-                    labelText: 'ic'
+                    labelText: 'ic',
+                    labelStyle: TextStyle(
+                        color: Colors.white
+                    )
                 ),
               ),
             ),
@@ -134,6 +180,7 @@ class _SignupState extends State<Signup> {
               child: Text("Today date "+ regdate,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
+                  color: Colors.white
                 ),
               ),
             ),
@@ -175,7 +222,7 @@ class _SignupState extends State<Signup> {
                   width: 400,
                   height: 50,
                   decoration: BoxDecoration(
-                      color: Colors.blueGrey,
+                      color: Colors.orange,
                       borderRadius: BorderRadius.circular(5)
                   ),
                   padding: const EdgeInsets.all(10),
@@ -183,6 +230,7 @@ class _SignupState extends State<Signup> {
                     'Sign Up',
                     textAlign: TextAlign.center,
                     style: TextStyle(
+                      color: Colors.white,
                         fontSize: 20
                     ),
                   ),

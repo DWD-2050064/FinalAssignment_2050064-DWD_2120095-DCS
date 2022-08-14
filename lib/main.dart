@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget{
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      initialRoute: '/',
+      initialRoute: '/  ',
       routes: {
         '/': (context) => Home(),
         '/sign_in': (context) => SignIn(),

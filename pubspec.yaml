@@ -38,6 +38,7 @@ dependencies:
   path:
   date_time_picker:
   email_validator:
+  persistent_bottom_nav_bar:
 
 dev_dependencies:
   flutter_test:

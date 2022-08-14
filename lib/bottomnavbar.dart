@@ -5,46 +5,30 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 75,
+      height: 60,
       padding: EdgeInsets.only(top: 5, bottom: 30),
-      color: Color.fromRGBO(185, 180, 180, 1),
+      color: Color.fromRGBO(250, 160, 0, 1),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           IconButton(
-              onPressed: (){
-                Navigator.pushReplacementNamed(context, '/');
-              },
-              icon: Icon(
-                Icons.home,
-                size: 44,
-              ),
+            onPressed: (){
+              Navigator.pushReplacementNamed(context, '/');
+            },
+            icon: Icon(
+              CupertinoIcons.home,
+              size: 30,
+              color: Colors.white,
+            ),
           ),
           IconButton(
               onPressed: (){
                 Navigator.pushReplacementNamed(context, '/sign_in');
               },
               icon: Icon(
-                Icons.person,
-                size: 44,
-              )
-          ),
-          IconButton(
-              onPressed: (){
-                Navigator.pushReplacementNamed(context, '/sign_in');
-              },
-              icon: Icon(
-                Icons.person,
-                size: 44,
-              )
-          ),
-          IconButton(
-              onPressed: (){
-                Navigator.pushReplacementNamed(context, '/sign_in');
-              },
-              icon: Icon(
-                Icons.person,
-                size: 44,
+                CupertinoIcons.person,
+                size: 30,
+                color: Colors.white,
               )
           ),
         ],
