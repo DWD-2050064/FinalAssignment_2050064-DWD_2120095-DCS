@@ -1,5 +1,5 @@
-import 'package:finalassign/Sign_in/merchant_login.dart';
-import 'package:finalassign/Sign_in/sign_up.dart';
+import 'package:finalassignment/Sign_in/merchant_login.dart';
+import 'package:finalassignment/Sign_in/sign_up.dart';
 import '../bottomnavbar.dart';
 import 'login.dart';
 import 'package:flutter/material.dart';

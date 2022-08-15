@@ -72,6 +72,7 @@ class LMerchant {
         'POST', Uri.parse('${uriDomain}webServices-1.php'));
     request.fields.addAll({
       'appID': '1r6B5G3v9w0D6W4L5z1B4H1b9V',
+      'appID': '1y6K5w3g7C2D4R6s9X4w4L0h6n',
       'action': 'loginMerchant',
       'username': username,
       'password': password
@@ -90,7 +91,7 @@ class LMerchant {
 }
 
 class RMerchant {
-  static Future<String> rm(username,password,companyName,email,phoneNumber,description,image,imageExt) async {
+  static Future<String> rm(username,password,email,phoneNumber,description,image,imageExt,companyname) async {
     var request = http.MultipartRequest(
         'POST', Uri.parse('${uriDomain}webServices-1.php'));
     request.fields.addAll({
@@ -98,13 +99,12 @@ class RMerchant {
       'action': 'registerMerchant',
       'username': username,
       'password': password,
-      'companyName' : companyName,
       'email': email,
       'phoneNumber': phoneNumber,
       'description' : description,
       'image' : image,
-      'imageExt' : imageExt,
-
+      'imageExt' : 'imageExt',
+      'companyName' : companyname,
     });
 
 

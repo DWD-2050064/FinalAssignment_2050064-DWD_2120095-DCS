@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:email_validator/email_validator.dart';
-import 'package:finalassign/Input%20Format/ic_formatter.dart';
-import 'package:finalassign/Sign_in/login.dart';
-import 'package:finalassign/postApi/web1.dart';
+import 'package:finalassignment/Input%20Format/ic_formatter.dart';
+import 'package:finalassignment/Sign_in/login.dart';
+import 'package:finalassignment/postApi/web1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -52,7 +52,6 @@ class _SignupState extends State<Signup> {
               padding: EdgeInsets.all(10),
               child: TextFormField(
                 keyboardType: TextInputType.text,
-                cursorColor: Colors.orange,
                 controller: username,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
@@ -77,7 +76,6 @@ class _SignupState extends State<Signup> {
             Container(
               padding: EdgeInsets.all(10),
               child: TextFormField(
-                cursorColor: Colors.orange,
                 controller: password,
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(

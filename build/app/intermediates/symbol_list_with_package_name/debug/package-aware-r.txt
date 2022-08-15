@@ -1,4 +1,4 @@
-com.example.finalassign
+com.example.finalassignment
 attr activityAction
 attr activityName
 attr alpha

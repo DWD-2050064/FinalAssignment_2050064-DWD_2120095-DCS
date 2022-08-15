@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:finalassign/home.dart';
-import 'package:finalassign/postApi/web1.dart';
+import 'package:finalassignment/home.dart';
+import 'package:finalassignment/postApi/web1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
