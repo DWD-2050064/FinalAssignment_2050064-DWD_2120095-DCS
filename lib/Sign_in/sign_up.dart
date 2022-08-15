@@ -52,6 +52,7 @@ class _SignupState extends State<Signup> {
               padding: EdgeInsets.all(10),
               child: TextFormField(
                 keyboardType: TextInputType.text,
+                cursorColor: Colors.orange,
                 controller: username,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
@@ -76,6 +77,7 @@ class _SignupState extends State<Signup> {
             Container(
               padding: EdgeInsets.all(10),
               child: TextFormField(
+                cursorColor: Colors.orange,
                 controller: password,
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(

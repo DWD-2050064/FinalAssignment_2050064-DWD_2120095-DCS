@@ -10,7 +10,12 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       title: 'NFT',
       theme: ThemeData(
-        primarySwatch: Colors.pink,
+        primarySwatch: Colors.orange,
+        textTheme: TextTheme(
+          subtitle1: TextStyle(
+            color: Colors.orange
+          )
+        )
       ),
       initialRoute: '/  ',
       routes: {
