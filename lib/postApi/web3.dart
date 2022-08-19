@@ -2,6 +2,28 @@ import 'package:http/http.dart' as http;
 
 String uriDomain = 'https://androidAPI.bitesbytesnetwork.com/ecomm/';
 
+class VProfileCustomer{
+  static Future<String> vpc(customer_id) async {
+    var request = http.MultipartRequest(
+        'POST', Uri.parse('${uriDomain}webServices-3.php'));
+    request.fields.addAll({
+      'appID': '1r6B5G3v9w0D6W4L5z1B4H1b9V',
+      'action': 'viewProfile',
+      'customer_id': customer_id
+
+    });
+
+
+
+    http.StreamedResponse response = await request.send();
+    if(response.statusCode == 200){
+      return await response.stream.bytesToString();
+    }else{
+      return "";
+    }
+  }
+}
+
 class VRecipient{
   static Future<String> vr() async {
     var request = http.MultipartRequest(
@@ -185,7 +207,7 @@ class VOrderDetail{
 }
 
 class APayment{
-  static Future<String> apayment(bank,total_payment) async {
+  static Future<String> apayment(bank,total_payment,customer_id) async {
     var request = http.MultipartRequest(
         'POST', Uri.parse('${uriDomain}webServices-3.php'));
     request.fields.addAll({
@@ -193,6 +215,7 @@ class APayment{
       'action': 'addPayment',
       'bank': bank,
       'total_payment': total_payment,
+      'customer_id': customer_id,
 
     });
 

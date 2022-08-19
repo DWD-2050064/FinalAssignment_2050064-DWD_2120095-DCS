@@ -1,4 +1,8 @@
+import 'dart:typed_data';
+
 import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart';
 
 String uriDomain = 'https://androidAPI.bitesbytesnetwork.com/ecomm/';
 
@@ -72,7 +76,6 @@ class LMerchant {
         'POST', Uri.parse('${uriDomain}webServices-1.php'));
     request.fields.addAll({
       'appID': '1r6B5G3v9w0D6W4L5z1B4H1b9V',
-      'appID': '1y6K5w3g7C2D4R6s9X4w4L0h6n',
       'action': 'loginMerchant',
       'username': username,
       'password': password
@@ -91,22 +94,28 @@ class LMerchant {
 }
 
 class RMerchant {
-  static Future<String> rm(username,password,email,phoneNumber,description,image,imageExt,companyname) async {
+  static Future<String> rm(filePath,imageExt,username,password,email,phoneNumber,description,companyName) async {
     var request = http.MultipartRequest(
         'POST', Uri.parse('${uriDomain}webServices-1.php'));
     request.fields.addAll({
       'appID': '1r6B5G3v9w0D6W4L5z1B4H1b9V',
       'action': 'registerMerchant',
+      'imageExt' : imageExt,
       'username': username,
       'password': password,
       'email': email,
       'phoneNumber': phoneNumber,
       'description' : description,
-      'image' : image,
-      'imageExt' : 'imageExt',
-      'companyName' : companyname,
+      'companyName' : companyName,
     });
 
+    PickedFile imageFile =PickedFile(filePath);
+    Uint8List length = await imageFile.readAsBytes();
+    int intLength = length.length;
+    var stream = http.ByteStream(imageFile.openRead());
+    var multipartFile = http.MultipartFile('image',stream.cast(),intLength,
+        filename: basename(imageFile.path));
+        request.files.add(multipartFile);
 
     http.StreamedResponse response = await request.send();
     if (response.statusCode == 200) {
