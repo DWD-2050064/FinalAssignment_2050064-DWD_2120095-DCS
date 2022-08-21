@@ -134,7 +134,7 @@ class ECategory{
 }
 
 class AProduct{
-  static Future<String> ap(product_name,category,price,stock,variation,description,filePath,pictureExt) async {
+  static Future<String> ap(product_name,category,price,stock,variation,description,filePath,pictureExt,merchant_id) async {
     var request = http.MultipartRequest(
         'POST', Uri.parse('${uriDomain}webServices-2.php'));
     request.fields.addAll({
@@ -147,6 +147,7 @@ class AProduct{
       'variation': variation ,
       'description': description ,
       'pictureExt': pictureExt ,
+      'merchant_id': merchant_id
 
     });
 

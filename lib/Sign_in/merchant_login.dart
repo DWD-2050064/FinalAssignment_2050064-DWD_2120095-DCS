@@ -1,9 +1,10 @@
 import 'dart:convert';
 
-import 'package:finalassignment/home.dart';
-import 'package:finalassignment/postApi/web1.dart';
+import 'package:finalassign/home.dart';
+import 'package:finalassign/postApi/web1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../bottomnavbar.dart';
 
@@ -35,7 +36,7 @@ class _Merchant_LoginState extends State<Merchant_Login> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: Colors.orange,
+                    color: Colors.white,
                     fontSize: 22
                   ),
                 )
@@ -110,12 +111,15 @@ class _Merchant_LoginState extends State<Merchant_Login> {
                         username.text,password.text);
                     var obj = jsonDecode(response);
                     if(obj['code'] != 'error') {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const Home()));
+                      SharedPreferences prefs = await SharedPreferences.getInstance();
+                      prefs.setString('merchant_id', obj['merchant_id']);
+                      Navigator.of(context)
+                          .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
                       showDialog(
                           context: context,
-                          builder: (_) =>
+                          builder: (_) => const
                               CupertinoAlertDialog(
-                                title: Text('Insert Sucessfully'),
+                                title: Text('Welcome'),
                               )
                       ).then((value) {
                         setState(() {
@@ -123,6 +127,14 @@ class _Merchant_LoginState extends State<Merchant_Login> {
                           password.clear();
                         });
                       });
+                    }else{
+                      showDialog(
+                          context: context,
+                          builder: (_) => const
+                              CupertinoAlertDialog(
+                                title: Text('Invalid User'),
+                              )
+                      );
                     }
                   },
                   child: Container(
@@ -142,7 +154,25 @@ class _Merchant_LoginState extends State<Merchant_Login> {
                       ),
                     ),
                   )
-              )
+              ),
+              TextButton(
+                  onPressed: (){
+                    Navigator.of(context).pushNamed('/merchant_sign_up');
+                  },
+                  child: Container(
+                    width: 300,
+                    height: 50,
+                    padding: const EdgeInsets.all(10),
+                    child: const Text(
+                      'Merchant Sign Up',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white
+                      ),
+                    ),
+                  )
+              ),
             ],
           ),
         )

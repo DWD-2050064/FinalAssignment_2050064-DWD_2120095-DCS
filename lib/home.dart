@@ -2,17 +2,15 @@
 import 'dart:convert';
 import 'dart:ui' as ui;
 
-import 'package:finalassignment/Product/myproduct/pdetails..dart';
-import 'package:finalassignment/Product/product.dart';
-import 'package:finalassignment/postApi/web1.dart';
 
+
+import 'package:finalassign/postApi/web1.dart';
 import 'package:flutter/material.dart';
 
-import 'Cart/cartscreen.dart';
-import 'Product/details_screen.dart';
 
-import 'Product/mainproduct.dart';
-import 'body.dart';
+
+
+import 'Product/pdetails..dart';
 import 'bottomnavbar.dart';
 
 class Home extends StatefulWidget {
@@ -120,7 +118,7 @@ class _HomeState extends State<Home> {
                                     highlightColor: Colors.transparent,
                                     splashColor: Colors.transparent,
                                     onTap: (){
-                                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CartScreen()));
+                                      // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CartScreen()));
                                     },
                                     child: const Text('Cart',
 
@@ -143,28 +141,28 @@ class _HomeState extends State<Home> {
 
                                   ),
 
-                                  // child: InkWell(
-                                  //   highlightColor: Colors.transparent,
-                                  //   splashColor: Colors.transparent,
-                                  //
-                                  //   onTap: (){
-                                  //     Navigator.of(context).push(MaterialPageRoute(builder: (context)=>userprofile()));
-                                  //   },
-                                  //   child:Center(
-                                  //
-                                  //
-                                  //     child: const Text('Cart',
-                                  //
-                                  //
-                                  //       style: TextStyle( color: Colors.blueAccent,
-                                  //         backgroundColor: Color(0xFF030303),fontSize: 20,
-                                  //       ),
-                                  //
-                                  //     ),
-                                  //
-                                  //
-                                  //   ),
-                                  // ),
+                                  child: InkWell(
+                                    highlightColor: Colors.transparent,
+                                    splashColor: Colors.transparent,
+
+                                    onTap: (){
+                                      // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MerchantSignup()));
+                                    },
+                                    child:Center(
+
+
+                                      child: const Text('add category',
+
+
+                                        style: TextStyle( color: Colors.blueAccent,
+                                          backgroundColor: Color(0xFF030303),fontSize: 20,
+                                        ),
+
+                                      ),
+
+
+                                    ),
+                                  ),
 
                                 ),
                                 // const Padding(padding: EdgeInsets.all(10)),
@@ -254,7 +252,9 @@ class _HomeState extends State<Home> {
                                           iconSize: 50,
                                           onPressed: (
 
-                                              ) {Navigator.of(context).push(MaterialPageRoute(builder: (context)=>product()));},
+                                              ) {
+                                            // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>product()));
+                                            },
                                         )
                                       // child: InkWell(
                                       //
@@ -293,7 +293,8 @@ class _HomeState extends State<Home> {
                                           icon: Image.asset('assets/images/musicnft.jpg',width: 600,height: 900,),
                                           onPressed: (
 
-                                              ) {Navigator.of(context).push(MaterialPageRoute(builder: (context)=>details()));},
+                                              ) {
+                                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>details()));},
                                         )
                                       // child: InkWell(
                                       //
@@ -330,7 +331,9 @@ class _HomeState extends State<Home> {
                                           // iconSize: 50,
                                           onPressed: (
 
-                                              ) {Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Body()));},
+                                              ) {
+                                            // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Body()));
+                                            },
                                         )
                                       // child: InkWell(
                                       //

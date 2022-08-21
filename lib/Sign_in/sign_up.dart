@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:email_validator/email_validator.dart';
-import 'package:finalassignment/Input%20Format/ic_formatter.dart';
-import 'package:finalassignment/Sign_in/login.dart';
-import 'package:finalassignment/postApi/web1.dart';
+import 'package:finalassign/Input%20Format/ic_formatter.dart';
+import 'package:finalassign/Sign_in/login.dart';
+import 'package:finalassign/postApi/web1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -25,7 +25,8 @@ class _SignupState extends State<Signup> {
   TextEditingController confirm_password = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController ic = TextEditingController();
-
+  bool passwordVisible = false;
+  bool passwordVisible1 = false;
   @override
   Widget build(BuildContext context) {
     String regdate = DateFormat('d MMM y').format(now);
@@ -93,7 +94,19 @@ class _SignupState extends State<Signup> {
                     labelText: 'password',
                     labelStyle: TextStyle(
                         color: Colors.white
-                    )
+                    ),
+                  suffixIcon: IconButton(
+                      color: Colors.orange,
+                      onPressed: (){
+                        setState(() {
+                          passwordVisible = !passwordVisible;
+                        });
+                      },
+                      icon: Icon(
+                        passwordVisible ? Icons.visibility: Icons.visibility_off,
+                        color: Colors.white,
+                      )
+                  ),
                 ),
               ),
             ),
@@ -117,7 +130,19 @@ class _SignupState extends State<Signup> {
                     labelText: 'confirm password',
                     labelStyle: TextStyle(
                         color: Colors.white
-                    )
+                    ),
+                  suffixIcon: IconButton(
+                      color: Colors.orange,
+                      onPressed: (){
+                        setState(() {
+                          passwordVisible1 = !passwordVisible1;
+                        });
+                      },
+                      icon: Icon(
+                        passwordVisible1 ? Icons.visibility: Icons.visibility_off,
+                        color: Colors.white,
+                      )
+                  ),
                 ),
               ),
             ),
@@ -194,12 +219,13 @@ class _SignupState extends State<Signup> {
                         username.text,password.text,email.text,ic.text,regdate);
                     var obj = jsonDecode(response);
                     if(obj['code'] != 'error') {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const Login()));
+                      Navigator.of(context)
+                          .pushNamedAndRemoveUntil('/customer_login', (Route<dynamic> route) => false);
                       showDialog(
                           context: context,
                           builder: (_) =>
                               CupertinoAlertDialog(
-                                title: Text('Insert Sucessfully'),
+                                title: Text('Register Sucessfully'),
                               )
                       ).then((value) {
                         setState(() {

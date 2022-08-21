@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BottomNavBar extends StatelessWidget {
   @override
@@ -13,7 +14,8 @@ class BottomNavBar extends StatelessWidget {
         children: <Widget>[
           IconButton(
             onPressed: (){
-              Navigator.pushReplacementNamed(context, '/');
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil('/checkout', (Route<dynamic> route) => false);
             },
             icon: Icon(
               CupertinoIcons.home,
@@ -22,8 +24,18 @@ class BottomNavBar extends StatelessWidget {
             ),
           ),
           IconButton(
-              onPressed: (){
-                Navigator.pushReplacementNamed(context, '/sign_in');
+              onPressed: ()async{
+                 SharedPreferences prefs = await SharedPreferences.getInstance();
+                 if(prefs.getString('customer_id') != null && prefs.getString('customer_id') != ""){
+                   Navigator.of(context)
+                       .pushNamedAndRemoveUntil('/profile', (Route<dynamic> route) => false);
+                 }else if(prefs.getString('merchant_id') != null && prefs.getString('merchant_id') != ""){
+                   Navigator.of(context)
+                     .pushNamedAndRemoveUntil('/profile', (Route<dynamic> route) => false);
+                 }else{
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil('/sign_in', (Route<dynamic> route) => false);
+                 }
               },
               icon: Icon(
                 CupertinoIcons.person,
