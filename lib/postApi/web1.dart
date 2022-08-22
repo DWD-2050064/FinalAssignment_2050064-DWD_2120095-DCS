@@ -49,13 +49,13 @@ class VCategory {
 }
 
 class VProduct {
-  static Future<String> vp(category) async {
+  static Future<String> vp(category_id) async {
     var request = http.MultipartRequest(
         'POST', Uri.parse('${uriDomain}webServices-1.php'));
     request.fields.addAll({
       'appID': '1r6B5G3v9w0D6W4L5z1B4H1b9V',
       'action': 'viewProduct',
-      'category': category ,
+      'category_id': category_id ,
 
 
     });

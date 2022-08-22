@@ -4,48 +4,55 @@ final String tableNotes = 'cart';
 /// new class ???Fields in which we define our field name
 class CartFields{
   static final List<String> values = [
-    cartID, pID, cID,quantity
+    cartID, product_id, picture,price,stock,
   ];
   static final String cartID= 'cartID';
-  static final String pID= 'pID';
-  static final String cID= 'cID';
-  static final String quantity= 'quantity';
+  static final String product_id= 'product_id';
+  static final String picture= 'picture';
+  static final String price= 'price';
+  static final String stock= 'stock';
 }
 
 class Cart{
   final int? cartID;
-  final int pID;
-  final int cID;
-  final int quantity;
+  final int product_id;
+  final int picture;
+  final int price;
+  final int stock;
   const Cart({
     this.cartID,
-    required this.pID,
-    required this.cID,
-    required this.quantity,
+    required this.product_id,
+    required this.picture,
+    required this.price,
+    required this.stock,
   });
 
   Cart copy({
     int? cartID,
-    int? pID,
-    int? cID,
-    int? quantity,
+    int? product_id,
+    int? picture,
+    int? price,
+    int? stock,
   }) =>
       Cart(
           cartID: cartID ?? this.cartID,
-          pID: pID ?? this.pID,
-          cID: cID ?? this.cID,
-          quantity:  quantity ?? this.quantity
+          product_id: product_id ?? this.product_id,
+          picture: picture ?? this.picture,
+          price:  price ?? this.price,
+          stock:  price ?? this.stock,
       );
   static Cart fromJson(Map<String, Object?> json) => Cart(
       cartID: json[CartFields.cartID] as int?,
-      pID: json[CartFields.pID] as int,
-      cID: json[CartFields.cID] as int,
-      quantity: json[CartFields.quantity] as int
+      product_id: json[CartFields.product_id] as int,
+      picture: json[CartFields.picture] as int,
+      price: json[CartFields.price] as int,
+      stock: json[CartFields.stock] as int,
   );
   Map<String, Object?> toJson() =>{
     CartFields.cartID: cartID,
-    CartFields.pID: pID,
-    CartFields.cID: cID,
-    CartFields.quantity: quantity
+    CartFields.product_id: product_id,
+    CartFields.picture: picture,
+    CartFields.price: price,
+    CartFields.stock: stock,
   };
 }

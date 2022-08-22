@@ -1,16 +1,7 @@
-
 import 'dart:convert';
-import 'dart:ui' as ui;
-
-
-
 import 'package:finalassign/postApi/web1.dart';
 import 'package:flutter/material.dart';
-
-
-
-
-import 'Product/pdetails..dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'bottomnavbar.dart';
 
 class Home extends StatefulWidget {
@@ -24,677 +15,85 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title:
-      Text(
-        'Welcome to NFT',
-        style: TextStyle(
-            fontSize: 40,
-            foreground: Paint()
-              ..shader = ui.Gradient.linear(
-                const Offset(0, 20),
-                const Offset(150, 20),
-                <Color>[
-                  Colors.black,
-                  Colors.white,
-                ],
-              )
-        ),
-      ),
-        backgroundColor: Colors.black45,),
+      backgroundColor: Colors.black,
       bottomNavigationBar: BottomNavBar(),
-
-      body:
-      FutureBuilder(
+      body: FutureBuilder(
           future: VCategory.vc(),
-          builder: (BuildContext context, AsyncSnapshot<String> snapshot){
-            if(snapshot.hasData){
+          builder: (BuildContext context,
+              AsyncSnapshot<String> snapshot) {
+            if (snapshot.hasData) {
               var response = snapshot.data;
               var obj = jsonDecode(response!);
-              if(obj['code'] == 'success'){
-                return
-
-                  Container(
-                    decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/bgbody2.jpg',
-
-                        ),
-
-                        fit: BoxFit.fill),
-                  ),
-                    // decoration: const BoxDecoration(
-                    //     gradient: LinearGradient(
-                    //         begin: Alignment.topLeft,
-                    //         end: Alignment.bottomRight,
-                    //
-                    //         colors: [Colors.orange, Colors.black]
-                    //
-                    //     )
-                    // ),
-                    child: Scaffold(
-                      backgroundColor: Colors.transparent,
-
-                      // appBar: AppBar(
-                      //   title: Text("NFT ECOM APPS "),
-                      //   backgroundColor: Colors.transparent,
-                      // ),
-
-                      body:
-                      ListView(
-
+              if (obj['code'] == 'success') {
+                return Column(
+                  children: [
+                      Column(
                         children: [
-
-                          // Text(
-                          //   'Welcome to NFT',
-                          //   style: TextStyle(
-                          //       fontSize: 40,
-                          //       foreground: Paint()
-                          //         ..shader = ui.Gradient.linear(
-                          //           const Offset(0, 20),
-                          //           const Offset(150, 20),
-                          //           <Color>[
-                          //             Colors.black,
-                          //             Colors.white,
-                          //           ],
-                          //         )
-                          //   ),
-                          // ),
-
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              children: [
-                                Container(
-                                  width: 40,
-                                  height: 25,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: Colors.orangeAccent
-                                    ),
-
-                                  ),
-
-                                  child: InkWell(
-                                    highlightColor: Colors.transparent,
-                                    splashColor: Colors.transparent,
-                                    onTap: (){
-                                      // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CartScreen()));
-                                    },
-                                    child: const Text('Cart',
-
-
-                                      style: TextStyle( color: Colors.blueAccent,
-                                        backgroundColor: Color(0xFF030303),fontSize: 20,
-                                      ),
-                                    ),
-                                  ),
-
-                                ),
-                                const Padding(padding: EdgeInsets.all(10)),
-                                Container(
-                                  width: 40,
-                                  height: 25,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: Colors.black
-                                    ),
-
-                                  ),
-
-                                  child: InkWell(
-                                    highlightColor: Colors.transparent,
-                                    splashColor: Colors.transparent,
-
-                                    onTap: (){
-                                      // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MerchantSignup()));
-                                    },
-                                    child:Center(
-
-
-                                      child: const Text('add category',
-
-
-                                        style: TextStyle( color: Colors.blueAccent,
-                                          backgroundColor: Color(0xFF030303),fontSize: 20,
-                                        ),
-
-                                      ),
-
-
-                                    ),
-                                  ),
-
-                                ),
-                                // const Padding(padding: EdgeInsets.all(10)),
-                                // Container(
-                                //   width: 110,
-                                //   height: 30,
-                                //   decoration: BoxDecoration(
-                                //     border: Border.all(
-                                //         color: Colors.black
-                                //     ),
-                                //
-                                //   ),
-                                //   child: InkWell(
-                                //     highlightColor: Colors.transparent,
-                                //     splashColor: Colors.transparent,
-                                //     onTap: (){
-                                //       Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Body()));
-                                //     },
-                                //     child: const Text('▶Home page◀',
-                                //
-                                //
-                                //       style: TextStyle( color: Colors.blueAccent
-                                //       ),
-                                //     ),
-                                //   ),
-                                // ),
-                                const Padding(padding: EdgeInsets.all(10)),
-                                // Container(
-                                //   width: 200,
-                                //   height: 200,
-                                //   decoration: BoxDecoration(
-                                //     border: Border.all(
-                                //         color: Colors.black
-                                //     ),
-                                //
-                                //   ),
-                                // ),
-                              ],
-                            ),
-                          ),
-                          Center(
-                         child: Text(
-                            'Category',
-                            style: TextStyle(
-                                fontSize: 40,
-                                foreground: Paint()
-                                  ..shader = ui.Gradient.linear(
-                                    const Offset(0, 20),
-                                    const Offset(150, 20),
-                                    <Color>[
-                                      Colors.deepOrange,
-                                      Colors.yellow,
-
-                                    ],
-                                  )
+                          Padding(padding: const EdgeInsets.only(top: 50,bottom: 10),
+                          child: Container(
+                            child: Text(
+                              'Category',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.orange
+                              ),
                             ),
                           ),
                           ),
-                          const Padding(padding: EdgeInsets.all(10)),
-                          SizedBox(
-                            height: 300,
-                            child: SingleChildScrollView(
-                              scrollDirection: Axis.vertical,
-                              child: Column(
+                          Container(
+                            height: 500,
+                            child: ListView(
+                                physics: const BouncingScrollPhysics(),
                                 children: [
-                              const Text(
-                                'NFT-ARTS',
-
-
-                                style: TextStyle( color: Colors.white,fontSize: 30,
-                                    fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                                  Container(
-                                    height: 200,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: Colors.black
-                                      ),
-
-                                    ),
-                                    child: Container(child: ConstrainedBox(
-                                        constraints: BoxConstraints.expand(),
-                                        child: IconButton(
-
-                                          icon: Image.asset('assets/images/NFTARTS.png'),
-                                          iconSize: 50,
-                                          onPressed: (
-
-                                              ) {
-                                            // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>product()));
+                                  for(var i = 0; i < obj['resultList'].length; i++)
+                                    Padding(padding: EdgeInsets.only(left: 50,bottom: 50),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                              child: Text(obj['resultList'][i]['name'],
+                                                textAlign: TextAlign.left,
+                                                style: TextStyle(
+                                                  fontSize: 20,
+                                                    color: Colors.white
+                                                ),
+                                              )
+                                          ),
+                                          InkWell(
+                                            onTap: ()async{
+                                              SharedPreferences prefs = await SharedPreferences.getInstance();
+                                              prefs.setString('category_id', obj['resultList'][i]['category_id']);
+                                              if(prefs.getString('merchant_id') != null){
+                                                Navigator.of(context)
+                                                    .pushNamedAndRemoveUntil('/product_list_merchant', (Route<dynamic> route) => false);
+                                              }else if(prefs.getString('customer_id') != null){
+                                                Navigator.of(context)
+                                                    .pushNamedAndRemoveUntil('/product_list', (Route<dynamic> route) => false);
+                                              }
                                             },
-                                        )
-                                      // child: InkWell(
-                                      //
-                                      //    // onTap: ,
-                                      //     child: Image.asset('assets/women.png',height: 50,
-                                      //       width: 50,))
-
+                                            child: Image.network(
+                                              'https://androidapi.bitesbytesnetwork.com/' +
+                                                  obj['resultList'][i]['thumbnail'],
+                                              height: 200,
+                                              width: 300,
+                                              fit: BoxFit.fitWidth,
+                                            ),
+                                          )
+                                        ],
+                                      )
                                     )
-
-                                    ),
-                                  ),
-                                  const Text(
-                                    'NFT-MUSICS',
-
-
-                                    style: TextStyle( color: Colors.white,fontSize: 30,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const Padding(padding: EdgeInsets.all(10)),
-                                  Container(
-
-                                    height: 200,
-                                    decoration: BoxDecoration(
-
-                                      border: Border.all(
-                                          color: Colors.black
-
-                                      ),
-
-                                    ),
-                                    child: Container(child: ConstrainedBox(
-                                        constraints: BoxConstraints.expand(),
-                                        child: IconButton(
-
-                                          icon: Image.asset('assets/images/musicnft.jpg',width: 600,height: 900,),
-                                          onPressed: (
-
-                                              ) {
-                                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>details()));},
-                                        )
-                                      // child: InkWell(
-                                      //
-                                      //    // onTap: ,
-                                      //     child: Image.asset('assets/women.png',height: 50,
-                                      //       width: 50,))
-
-                                    )
-
-                                    ),
-                                  ),
-                                  const Text(
-                                    'NFT-IN-GAMES',
-
-
-                                    style: TextStyle( color: Colors.white,fontSize: 30,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const Padding(padding: EdgeInsets.all(10)),
-                                  Container(
-                                    height: 200,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: Colors.black
-                                      ),
-
-                                    ),
-                                    child: Container(child: ConstrainedBox(
-                                        constraints: BoxConstraints.expand(),
-                                        child: IconButton(
-
-                                          icon: Image.asset('assets/images/nftgames.jpg',width: 600,height: 900,),
-                                          // iconSize: 50,
-                                          onPressed: (
-
-                                              ) {
-                                            // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Body()));
-                                            },
-                                        )
-                                      // child: InkWell(
-                                      //
-                                      //    // onTap: ,
-                                      //     child: Image.asset('assets/women.png',height: 50,
-                                      //       width: 50,))
-
-                                    )
-
-                                    ),
-                                  ),
-
-
-
-                                ],
-                              ),
+                                ]
                             ),
                           ),
-                    // const Padding(padding: EdgeInsets.all(10)),
-                    // SizedBox(
-                    //   height: 300,
-                    //   child: SingleChildScrollView(
-                    //     scrollDirection: Axis.vertical,
-                    //         child: Row(
-                    //           children: [
-                    //             const Text(
-                    //               'NFT-ART',
-                    //
-                    //
-                    //               style: TextStyle( color: Colors.white,fontSize: 30,
-                    //               ),
-                    //             ),
-                    //             Container(
-                    //               width: 200,
-                    //               height: 200,
-                    //               decoration: BoxDecoration(
-                    //                 border: Border.all(
-                    //                     color: Colors.orangeAccent
-                    //                 ),
-                    //
-                    //               ),
-                    //
-                    //               child: Container(
-                    //
-                    //                 child: ConstrainedBox(
-                    //                   constraints: BoxConstraints.expand(),
-                    //
-                    //                    child: IconButton(
-                    //
-                    //                      icon: Image.asset('assets/images/NFTARTS.png'),
-                    //                      iconSize: 50,
-                    //                      onPressed: (
-                    //
-                    //                          ) {Navigator.of(context).push(MaterialPageRoute(builder: (context)=>DetailsScreen()));},
-                    //                    ),
-                    //
-                    //                   ),
-                    //
-                    //                 // child: InkWell(
-                    //                 //
-                    //                 //    // onTap: ,
-                    //                 //     child: Image.asset('assets/women.png',height: 50,
-                    //                 //       width: 50,))
-                    //
-                    //
-                    //
-                    //       ),
-                    //
-                    //
-                    //             ),
-                    //             const Text(
-                    //               'NFT-MUSIC',
-                    //
-                    //
-                    //               style: TextStyle( color: Colors.white,fontSize: 30,
-                    //               ),
-                    //             ),
-                    //             const Padding(padding: EdgeInsets.all(10)),
-                    //             Container(
-                    //               width: 200,
-                    //               height: 200,
-                    //               decoration: BoxDecoration(
-                    //                 border: Border.all(
-                    //                     color: Colors.orangeAccent
-                    //                 ),
-                    //
-                    //               ),
-                    //               child: Container(child: ConstrainedBox(
-                    //                 constraints: BoxConstraints.expand(),
-                    //                 child: IconButton(
-                    //
-                    //                   icon: Image.asset('assets/images/musicnft.jpg',width: 600,height: 900,),
-                    //                  // iconSize: 50,
-                    //                   onPressed: (
-                    //
-                    //                       ) {Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Body()));},
-                    //                 ),
-                    //
-                    //
-                    //                 // child: InkWell(
-                    //                 //
-                    //                 //    // onTap: ,
-                    //                 //     child: Image.asset('assets/women.png',height: 50,
-                    //                 //       width: 50,))
-                    //
-                    //               ),
-                    //
-                    //               ),
-                    //             ),
-                    //             const Text(
-                    //               'NFT-In-Games',
-                    //
-                    //
-                    //               style: TextStyle( color: Colors.white,fontSize: 30,
-                    //               ),
-                    //             ),
-                    //             const Padding(padding: EdgeInsets.all(10)),
-                    //             Container(
-                    //               width: 200,
-                    //               height: 200,
-                    //               decoration: BoxDecoration(
-                    //                 border: Border.all(
-                    //                     color: Colors.orangeAccent
-                    //                 ),
-                    //
-                    //               ),
-                    //               child: Container(child: ConstrainedBox(
-                    //                 constraints: BoxConstraints.expand(),
-                    //                 child: IconButton(
-                    //
-                    //                   icon: Image.asset('assets/images/nftgames.jpg',width: 600,height: 900,),
-                    //                   // iconSize: 50,
-                    //                   onPressed: (
-                    //
-                    //                       ) {Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Body()));},
-                    //                 ),
-                    //
-                    //
-                    //                 // child: InkWell(
-                    //                 //
-                    //                 //    // onTap: ,
-                    //                 //     child: Image.asset('assets/women.png',height: 50,
-                    //                 //       width: 50,))
-                    //
-                    //               ),
-                    //
-                    //               ),
-                    //             ),
-                    //           ],
-                    //         ),
-                    //       ),
-                    // ),
-                    //       const Padding(padding: EdgeInsets.all(10)),
-                    //       SingleChildScrollView(
-                    //         scrollDirection: Axis.horizontal,
-                    //         child: Row(
-                    //           children: [
-                    //             Container(
-                    //               width: 200,
-                    //               height: 200,
-                    //               decoration: BoxDecoration(
-                    //                 border: Border.all(
-                    //                     color: Colors.black
-                    //                 ),
-                    //
-                    //               ),
-                    //               child: Container(child: ConstrainedBox(
-                    //                   constraints: BoxConstraints.expand(),
-                    //                   child: IconButton(
-                    //
-                    //                     icon: Image.asset('assets/images/addproduct.jpg'),
-                    //                     iconSize: 50,
-                    //                     onPressed: (
-                    //
-                    //                         ) {Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Body()));},
-                    //                   )
-                    //                 // child: InkWell(
-                    //                 //
-                    //                 //    // onTap: ,
-                    //                 //     child: Image.asset('assets/women.png',height: 50,
-                    //                 //       width: 50,))
-                    //
-                    //               )
-                    //
-                    //               ),
-                    //
-                    //             ),
-                    //             const Padding(padding: EdgeInsets.all(10)),
-                    //             Container(
-                    //               width: 200,
-                    //               height: 200,
-                    //               decoration: BoxDecoration(
-                    //                 border: Border.all(
-                    //                     color: Colors.black
-                    //                 ),
-                    //
-                    //               ),
-                    //               child: Container(child: ConstrainedBox(
-                    //                   constraints: BoxConstraints.expand(),
-                    //                   child: IconButton(
-                    //
-                    //                     icon: Image.asset('assets/images/addproduct.jpg'),
-                    //                     iconSize: 50,
-                    //                     onPressed: (
-                    //
-                    //                         ) {Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Body()));},
-                    //                   )
-                    //                 // child: InkWell(
-                    //                 //
-                    //                 //    // onTap: ,
-                    //                 //     child: Image.asset('assets/women.png',height: 50,
-                    //                 //       width: 50,))
-                    //
-                    //               )
-                    //
-                    //               ),
-                    //             ),
-                    //             const Padding(padding: EdgeInsets.all(10)),
-                    //             Container(
-                    //               width: 200,
-                    //               height: 200,
-                    //               decoration: BoxDecoration(
-                    //                 border: Border.all(
-                    //                     color: Colors.black
-                    //                 ),
-                    //
-                    //               ),
-                    //               child: Container(child: ConstrainedBox(
-                    //                   constraints: BoxConstraints.expand(),
-                    //                   child: IconButton(
-                    //
-                    //                     icon: Image.asset('assets/images/addproduct.jpg'),
-                    //                     iconSize: 50,
-                    //                     onPressed: (
-                    //
-                    //                         ) {Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Body()));},
-                    //                   )
-                    //                 // child: InkWell(
-                    //                 //
-                    //                 //    // onTap: ,
-                    //                 //     child: Image.asset('assets/women.png',height: 50,
-                    //                 //       width: 50,))
-                    //
-                    //               )
-                    //
-                    //               ),
-                    //             ),
-                    //           ],
-                    //         ),
-                    //       ),
-                    //       const Padding(padding: EdgeInsets.all(10)),
-                    //       SizedBox(
-                    //         height: 300,
-                    //         child: SingleChildScrollView(
-                    //           scrollDirection: Axis.vertical,
-                    //           child: Column(
-                    //             children: [
-                    //               Container(
-                    //                 height: 200,
-                    //                 decoration: BoxDecoration(
-                    //                   border: Border.all(
-                    //                       color: Colors.black
-                    //                   ),
-                    //
-                    //                 ),
-                    //                 child: Container(child: ConstrainedBox(
-                    //                     constraints: BoxConstraints.expand(),
-                    //                     child: IconButton(
-                    //
-                    //                       icon: Image.network('https://miro.medium.com/max/1400/1*SNOwGBmvP12qQA-NA4FXmg.gif'),
-                    //                       iconSize: 50,
-                    //                       onPressed: (
-                    //
-                    //                           ) {Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Body()));},
-                    //                     )
-                    //                   // child: InkWell(
-                    //                   //
-                    //                   //    // onTap: ,
-                    //                   //     child: Image.asset('assets/women.png',height: 50,
-                    //                   //       width: 50,))
-                    //
-                    //                 )
-                    //
-                    //                 ),
-                    //               ),
-                    //               const Padding(padding: EdgeInsets.all(10)),
-                    //               Container(
-                    //
-                    //                 height: 200,
-                    //                 decoration: BoxDecoration(
-                    //
-                    //                   border: Border.all(
-                    //                       color: Colors.black
-                    //
-                    //                   ),
-                    //
-                    //                 ),
-                    //                 child: Container(child: ConstrainedBox(
-                    //                     constraints: BoxConstraints.expand(),
-                    //                     child: IconButton(
-                    //
-                    //                       icon: Image.asset('assets/images/addproduct.jpg'),
-                    //                       iconSize: 50,
-                    //                       onPressed: (
-                    //
-                    //                           ) {Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Body()));},
-                    //                     )
-                    //                   // child: InkWell(
-                    //                   //
-                    //                   //    // onTap: ,
-                    //                   //     child: Image.asset('assets/women.png',height: 50,
-                    //                   //       width: 50,))
-                    //
-                    //                 )
-                    //
-                    //                 ),
-                    //               ),
-                    //               const Padding(padding: EdgeInsets.all(10)),
-                    //               Container(
-                    //                 height: 200,
-                    //                 decoration: BoxDecoration(
-                    //                   border: Border.all(
-                    //                       color: Colors.black
-                    //                   ),
-                    //
-                    //                 ),
-                    //                 child: Container(child: ConstrainedBox(
-                    //                     constraints: BoxConstraints.expand(),
-                    //                     child: IconButton(
-                    //
-                    //                       icon: Image.asset('assets/images/addproduct.jpg'),
-                    //                       iconSize: 50,
-                    //                       onPressed: (
-                    //
-                    //                           ) {Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Body()));},
-                    //                     )
-                    //                   // child: InkWell(
-                    //                   //
-                    //                   //    // onTap: ,
-                    //                   //     child: Image.asset('assets/women.png',height: 50,
-                    //                   //       width: 50,))
-                    //
-                    //                 )
-                    //
-                    //                 ),
-                    //               ),
-                    //
-                    //
-                    //
-                    //             ],
-                    //           ),
-                    //         ),
-                    //       )
                         ],
                       ),
-                    ),
-                  );
-              }else{
+                  ],
+                );
+              } else {
                 return Container();
               }
-            }else{
+            } else {
               return Container();
             }
           }

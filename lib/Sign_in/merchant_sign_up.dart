@@ -374,8 +374,6 @@ class _MerchantSignupState extends State<MerchantSignup> {
             TextButton(
                 onPressed: () async {
                   if(confirm_password.text == password.text){
-
-
                     var response = await RMerchant.rm(
                         filePath,imageExt,username.text,password.text,email.text,phoneNumber.text,description.text,companyName.text);
                     EasyLoading.show(status : 'Uploading');

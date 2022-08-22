@@ -204,7 +204,7 @@ class EProduct{
 }
 
 class RProduct{
-  static Future<String> ep(product_id) async {
+  static Future<String> rp(product_id) async {
     var request = http.MultipartRequest(
         'POST', Uri.parse('${uriDomain}webServices-2.php'));
     request.fields.addAll({
@@ -319,7 +319,6 @@ class VPaymentDetail{
         'POST', Uri.parse('${uriDomain}webServices-2.php'));
     request.fields.addAll({
       'appID': '1r6B5G3v9w0D6W4L5z1B4H1b9V',
-
       'action': 'viewPaymentDetail',
       'payment_id': payment_id,
 

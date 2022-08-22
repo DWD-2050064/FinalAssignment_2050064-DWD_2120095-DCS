@@ -1,5 +1,6 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+
 import 'Cart_Model.dart';
 
 class CartDatabase{
@@ -31,9 +32,10 @@ class CartDatabase{
     await db.execute('''
     CREATE TABLE $tableNotes(
     ${CartFields.cartID} INTEGER PRIMARY KEY AUTOINCREMENT,
-    ${CartFields.cID} INTEGER NOT NULL,
-    ${CartFields.pID} INTEGER NOT NULL,
-    ${CartFields.quantity} INTEGER NOT NULL
+    ${CartFields.product_id} INTEGER NOT NULL,
+    ${CartFields.picture} INTEGER NOT NULL,
+    ${CartFields.price} INTEGER NOT NULL,
+    ${CartFields.stock} INTEGER NOT NULL,
     )
     ''');
   }
